@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arthur Farias Pereira · Junior Web Developer</title>
+<meta name="description" content="Junior web developer in Goiânia, Brazil, open to remote roles. Plain HTML, CSS and JavaScript, plus APIs and AI automation. See the projects and the code.">
+<meta name="theme-color" content="#edefea">
+<meta property="og:title" content="Arthur Farias Pereira · Junior Web Developer">
+<meta property="og:description" content="Remote junior web developer from Brazil. Projects, code and contact.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314182b'/%3E%3Crect x='6' y='20' width='20' height='4' fill='%232540e8'/%3E%3Crect x='9' y='14' width='14' height='4' fill='%232540e8'/%3E%3Crect x='12' y='8' width='8' height='4' fill='%23f0a92b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #edefea;
+  --surface: #f7f8f5;
+  --ink: #14182b;
+  --muted: #4a5068;
+  --line: #cdd1c8;
+  --blue: #2540e8;
+  --gold: #f0a92b;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --code: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+h1, h2, h3 { font-family: var(--display); line-height: 1.08; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0 0 1em; max-width: 62ch; }
+a { color: var(--blue); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+.wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+
+/* top bar */
+.bar { padding: 1.25rem 0; }
+.bar .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.bar strong { font-family: var(--display); font-weight: 700; font-size: 1.05rem; }
+.bar nav { display: flex; gap: 1.5rem; }
+.bar nav a { color: var(--ink); text-decoration: none; font-family: var(--display); font-weight: 500; font-size: 1rem; }
+.bar nav a:hover { color: var(--blue); }
+
+/* hero */
+.hero { padding: clamp(2.5rem, 8vw, 6rem) 0 clamp(3rem, 8vw, 6rem); }
+.hero .wrap { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 860px) { .hero .wrap { grid-template-columns: 1.25fr 1fr; } }
+.hero h1 { font-size: clamp(2.5rem, 7vw, 4.75rem); font-weight: 800; max-width: 12ch; }
+.hero .lead { font-size: 1.3rem; margin-top: 1.5rem; max-width: 34ch; }
+.hero .meta { color: var(--muted); font-size: 1rem; margin-top: 1.5rem; }
+.actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; }
+.btn {
+  display: inline-block; padding: 0.7rem 1.2rem; font-family: var(--display); font-weight: 700; font-size: 1rem;
+  text-decoration: none; border: 2px solid var(--ink); color: var(--ink); background: transparent;
+}
+.btn:hover { background: var(--ink); color: var(--bg); }
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn.primary:hover { background: var(--blue); border-color: var(--blue); }
+
+/* the layers: one entrance on load */
+.layers { display: flex; flex-direction: column-reverse; align-items: center; gap: 6px; padding: 1rem 0; }
+.layer {
+  height: 3.25rem; display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 700; font-size: 1.05rem; color: #fff;
+  transform: skewX(-14deg);
+  animation: stack 0.55s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay: calc(var(--i) * 0.14s + 0.2s);
+}
+.layer span { transform: skewX(14deg); }
+.layer:nth-child(1) { width: 100%; background: var(--ink); --i: 0; }
+.layer:nth-child(2) { width: 88%;  background: #1d2a6b; --i: 1; }
+.layer:nth-child(3) { width: 76%;  background: var(--blue); --i: 2; }
+.layer:nth-child(4) { width: 64%;  background: #5870f2; --i: 3; }
+.layer:nth-child(5) { width: 52%;  background: var(--gold); color: var(--ink); --i: 4; }
+@keyframes stack { from { opacity: 0; translate: 0 -2.5rem; } to { opacity: 1; translate: 0 0; } }
+
+/* sections */
+section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+.sec-title { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 0.5rem; }
+.sec-intro { color: var(--muted); margin-bottom: 2.5rem; }
+
+/* projects */
+.project { display: grid; gap: 1.5rem; padding: 2.5rem 0; border-top: 1px solid var(--line); }
+@media (min-width: 720px) { .project { grid-template-columns: 112px 1fr; gap: 2.5rem; } }
+.art { width: 112px; height: 112px; background: var(--surface); }
+.art svg { display: block; width: 100%; height: 100%; }
+.project h3 { font-size: 1.6rem; font-weight: 700; }
+.project .where { color: var(--muted); font-size: 1rem; margin: 0.25rem 0 1rem; }
+.stack { color: var(--muted); font-size: 1rem; }
+.stack strong { color: var(--ink); font-weight: 600; }
+.links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin: 1rem 0 0; font-family: var(--display); font-weight: 500; }
+
+details { margin-top: 1.25rem; max-width: 44rem; }
+summary {
+  cursor: pointer; display: inline-block; padding: 0.4rem 0.9rem; border: 1.5px solid var(--ink);
+  font-family: var(--display); font-weight: 700; font-size: 0.95rem; list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary:hover { background: var(--ink); color: var(--bg); }
+details[open] summary { background: var(--ink); color: var(--bg); }
+details .note { font-size: 0.95rem; color: var(--muted); margin: 0.75rem 0 0.5rem; }
+pre {
+  margin: 0.5rem 0 0; padding: 1.1rem 1.25rem; overflow-x: auto; background: var(--ink); color: #e6e9f5;
+  font-family: var(--code); font-size: 0.85rem; line-height: 1.6; tab-size: 2;
+}
+pre .c { color: #8e96b8; }
+pre .k { color: var(--gold); }
+ol.steps { margin: 0.75rem 0 0; padding-left: 1.25rem; }
+ol.steps li { margin-bottom: 0.4rem; }
+.also { padding-top: 2rem; border-top: 1px solid var(--line); color: var(--muted); }
+
+/* about + skills */
+.about { display: grid; gap: 2.5rem; }
+@media (min-width: 860px) { .about { grid-template-columns: 1.3fr 1fr; gap: 4rem; } }
+dl.skills { margin: 0; }
+dl.skills dt { font-family: var(--display); font-weight: 700; margin-top: 1rem; }
+dl.skills dt:first-child { margin-top: 0; }
+dl.skills dd { margin: 0; color: var(--muted); font-size: 1.02rem; }
+
+/* contact */
+.contact { background: var(--ink); color: var(--bg); }
+.contact a { color: var(--gold); }
+.contact .sec-intro { color: #b9bed4; }
+.contact .big { font-family: var(--display); font-weight: 800; font-size: clamp(1.4rem, 4.5vw, 2.4rem); word-break: break-word; }
+.contact ul { list-style: none; padding: 0; margin: 1.75rem 0 0; display: grid; gap: 0.4rem; }
+footer { padding: 1.5rem 0 2.5rem; color: #b9bed4; background: var(--ink); font-size: 0.95rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .layer { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <strong>Arthur Farias Pereira</strong>
+    <nav aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Junior web developer. Plain HTML, CSS and JavaScript.</h1>
+        <p class="lead">I'm Arthur, a Computer Science student in Goiânia, Brazil. I build real sites and tools for real businesses, and I'm looking for a remote team where I can keep learning.</p>
+        <p class="meta">Working hours in UTC−3, overlapping with US business hours. English: advanced.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">See the projects</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="layers" role="img" aria-label="Five stacked layers: HTML, CSS, JavaScript, APIs and AI tools">
+        <div class="layer" aria-hidden="true"><span>HTML</span></div>
+        <div class="layer" aria-hidden="true"><span>CSS</span></div>
+        <div class="layer" aria-hidden="true"><span>JavaScript</span></div>
+        <div class="layer" aria-hidden="true"><span>APIs</span></div>
+        <div class="layer" aria-hidden="true"><span>AI tools</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2 class="sec-title">Projects</h2>
+      <p class="sec-intro">What I built, why, and the code behind it. Open "Show the code" to read it.</p>
+
+      <article class="project">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 112 112"><g fill="#2540e8"><rect x="14" y="78" width="84" height="10"/><rect x="22" y="64" width="68" height="10"/><rect x="30" y="50" width="52" height="10"/><rect x="38" y="36" width="36" height="10"/></g><rect x="46" y="22" width="20" height="10" fill="#f0a92b"/></svg>
+        </div>
+        <div>
+          <h3>forge3D</h3>
+          <p class="where">Online store for a 3D printing business I am building with friends</p>
+          <p>Customers pick a ready-made piece, or choose size, material and color and watch a Three.js model update. The cart builds the whole order as a structured WhatsApp message, so the owner needs no backend and no paid dashboard. The business is still in development and has not launched yet.</p>
+          <p class="stack"><strong>Built with</strong> HTML, CSS, JavaScript, Three.js, GSAP. About 4,000 lines, no framework, no build step.</p>
+          <p class="links"><a href="https://github.com/fafaarthur-tech/forge3D">Code on GitHub</a></p>
+          <details>
+            <summary>Show the code</summary>
+            <p class="note">From the scroll scene that explains how a part is printed, layer by layer.</p>
+<pre><code><span class="k">const</span> SLICES = 5;
+<span class="k">for</span> (<span class="k">let</span> i = 0; i &lt; SLICES; i++) {
+  <span class="k">const</span> s = document.createElement("div");
+  s.className = "slice";
+  s.style.setProperty("--i", i);
+  s.style.setProperty("--img", `url("${photo}")`);
+  sliceWrap.appendChild(s);
+}</code></pre>
+          </details>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 112 112"><g fill="#2540e8"><rect x="16" y="64" width="14" height="32"/><rect x="38" y="44" width="14" height="52"/><rect x="60" y="56" width="14" height="40"/></g><rect x="82" y="26" width="14" height="70" fill="#f0a92b"/></svg>
+        </div>
+        <div>
+          <h3>Life OS</h3>
+          <p class="where">Finance and study tracker for two people</p>
+          <p>Type or say a sentence in Portuguese, like "30 reais do almoço", and it becomes an expense, with undo. It installs as a web app, has a Siri shortcut, and sends reminders before events. Only two accounts can log in, and the access rules live in the database.</p>
+          <p class="stack"><strong>Built with</strong> JavaScript, Supabase (PostgreSQL, row-level security, Edge Functions), Cloudflare, Node test runner. Ten automated test files cover the parser, the calculations and the API handler.</p>
+          <p class="links"><a href="https://github.com/fafaarthur-tech/Life-IOS">Code on GitHub</a></p>
+          <details>
+            <summary>Show the code</summary>
+            <p class="note">The first step of the sentence reader: remove accents and case so "almoço" and "ALMOCO" match.</p>
+<pre><code><span class="k">export function</span> normalizar(s) {
+  <span class="k">return</span> String(s ?? '')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase();
+}</code></pre>
+          </details>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 112 112"><path d="M24 96V56a32 32 0 0 1 64 0v40z" fill="#f0a92b"/><path d="M40 96V60a16 16 0 0 1 32 0v36z" fill="#14182b"/></svg>
+        </div>
+        <div>
+          <h3>Portfolio for a fashion professional</h3>
+          <p class="where">Animated one-page site for Luana Almeida</p>
+          <p>A single page that tells her career as a scroll: each project is a chapter with photos and a link to the original post. Smooth scrolling and animation come from GSAP, ScrollTrigger and Lenis.</p>
+          <p class="stack"><strong>Built with</strong> HTML, CSS, JavaScript. Images in WebP, alt text on every photo, and it still works with animations off or JavaScript disabled. Personal data from her certificates stays out of the repository.</p>
+          <p class="links"><a href="https://github.com/fafaarthur-tech/portifolio_Luana">Code on GitHub</a></p>
+          <details>
+            <summary>Show the code</summary>
+            <p class="note">Smooth scrolling is only switched on for people who haven't asked for reduced motion.</p>
+<pre><code><span class="k">var</span> reduce = window.matchMedia(
+  '(prefers-reduced-motion: reduce)'
+).matches;
+
+<span class="k">if</span> (!reduce &amp;&amp; window.Lenis) {
+  lenis = <span class="k">new</span> Lenis({ lerp: 0.085, smoothWheel: <span class="k">true</span> });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(<span class="k">function</span> (t) { lenis.raf(t * 1000); });
+}</code></pre>
+          </details>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 112 112"><g fill="none" stroke="#14182b" stroke-width="3"><path d="M30 56h52"/></g><circle cx="26" cy="56" r="12" fill="#2540e8"/><circle cx="56" cy="56" r="12" fill="#f0a92b"/><circle cx="86" cy="56" r="12" fill="#14182b"/></svg>
+        </div>
+        <div>
+          <h3>Photo-to-ERP robot</h3>
+          <p class="where">Automation in production at Wanessa Lopez Concept, a fashion store</p>
+          <p>Registering each new piece by hand was slow. Now the team sends a photo to a Telegram bot, an AI identifies the item, and the product appears in the ERP. I tested it with dummy products before it touched real stock.</p>
+          <p class="stack"><strong>Built with</strong> Make, Telegram Bot API, Gemini API, Olist ERP REST API.</p>
+          <details>
+            <summary>How it works</summary>
+            <ol class="steps">
+              <li>A team member sends a photo of the piece to the Telegram bot.</li>
+              <li>Make passes the image to the Gemini API, which describes the piece and fills in the product fields.</li>
+              <li>Make creates the product in the Olist ERP through its API.</li>
+              <li>The team checks the new product, with no manual data entry.</li>
+            </ol>
+          </details>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 112 112"><defs><pattern id="weave" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#2540e8"/><rect x="8" y="8" width="8" height="8" fill="#2540e8"/><rect x="8" width="8" height="8" fill="#f0a92b"/></pattern></defs><rect x="16" y="16" width="80" height="80" fill="url(#weave)"/></svg>
+        </div>
+        <div>
+          <h3>Digital fabric catalog</h3>
+          <p class="where">For Marceal Têxtil, a fabric wholesaler</p>
+          <p>I worked in the company's receiving and shipping, then built the catalog to make choosing a fabric easier. Every roll has its weight, width, yield, grammage and composition. Customers can compare fabrics side by side, follow a "which fabric do I need?" guide, and calculate how many kilos an order takes.</p>
+          <p class="stack"><strong>Built with</strong> HTML, CSS, JavaScript.</p>
+        </div>
+      </article>
+
+      <p class="also">Also at Wanessa Lopez Concept: a price calculator used during live-stream sales, and ongoing work on the store's Shopify theme (Liquid, CSS, JavaScript).</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2 class="sec-title">About</h2>
+        <p>I started in production at a sportswear maker, then moved to logistics at a fabric wholesaler. Both jobs showed me tasks that a small program could do better, so I started building them.</p>
+        <p>Today I manage e-commerce and IT at a fashion store in Goiânia, where a software engineer, who is also a physicist, trains me on real projects. I study Computer Science at PUC Goiás and keep learning new languages and frameworks.</p>
+        <p>I use AI tools like Claude to move faster, and I make sure I understand every line I ship. I'm eager to learn WordPress and HubSpot CMS, and to work next to a senior engineer on client projects.</p>
+      </div>
+      <dl class="skills">
+        <dt>Front end</dt>
+        <dd>HTML, CSS, JavaScript, Three.js, GSAP</dd>
+        <dt>Platforms</dt>
+        <dd>Shopify (Liquid), progressive web apps, static hosting</dd>
+        <dt>Back end and integrations</dt>
+        <dd>Supabase and PostgreSQL, REST APIs, Make, Telegram bots</dd>
+        <dt>AI</dt>
+        <dd>Claude and the Gemini API for automation</dd>
+        <dt>Tools</dt>
+        <dd>Git, GitHub, Node.js</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2 class="sec-title">Contact</h2>
+      <p class="sec-intro">Open to remote junior web developer roles.</p>
+      <p class="big"><a href="mailto:arthurfr309@gmail.com">arthurfr309@gmail.com</a></p>
+      <ul>
+        <li><a href="https://github.com/fafaarthur-tech">GitHub: fafaarthur-tech</a></li>
+        <li><a href="https://www.linkedin.com/in/arthur-farias-981b65394/">LinkedIn: Arthur Farias</a></li>
+        <!-- Add your résumé here once the PDF is uploaded: <li><a href="Arthur-Farias-Resume.pdf">Résumé (PDF)</a></li> -->
+        <li>Goiânia, Brazil · UTC−3</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Written by hand in HTML and CSS. View the page source to see how.</div>
+</footer>
+
+</body>
+</html>
